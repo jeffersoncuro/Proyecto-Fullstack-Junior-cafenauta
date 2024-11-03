@@ -1,0 +1,44 @@
+<div class="locales">
+    <div class="header">
+        <h2 class="titulo"><i class="bi bi-eye"></i> Reservas Habilitadas</h2>
+    </div>
+    <div *ngIf="mensajeError" class="alert alert-danger">
+        {{ mensajeError }}
+    </div>
+
+    <div class="contenedor">
+        <table class="localesTabla">
+            <thead>
+                <tr>
+                    <!-- Ocultamos el campo ID eliminando esta columna -->
+                    <th><i class="bi bi-person-fill"></i> Nombre</th>
+                    <th><i class="bi bi-person-lines-fill"></i> Apellidos</th>
+                    <th><i class="bi bi-envelope-fill"></i> Email</th>
+                    <th><i class="bi bi-telephone-fill"></i> Teléfono</th>
+                    <th><i class="bi bi-calendar-fill"></i> Fecha</th>
+                    <th><i class="bi bi-clock-fill"></i> Hora</th>
+                    <th><i class="bi bi-people-fill"></i> Comensales</th>
+                    <th><i class="bi bi-building"></i> Local</th>
+
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let reserva of reservas">
+                    <!-- Eliminamos el campo ID en esta fila -->
+                    <td>{{ reserva.nomRes }}</td>
+                    <td>{{ reserva.apeRes }}</td>
+                    <td>{{ reserva.emailRes }}</td>
+                    <td>{{ reserva.telRes }}</td>
+                    <td>{{ reserva.fechaReserva | date:'shortDate' }}</td>
+                    <td>{{ reserva.horaReserva }}</td>
+                    <td>{{ reserva.comensales }}</td>
+                    <td>{{ reserva.local.dir_local }}</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <ng-template #noReservas>
+            <p>No hay reservas habilitadas.</p>
+        </ng-template>
+    </div>
+</div>

@@ -1,0 +1,55 @@
+<div class="locales">
+  <div class="header">
+    <h2 class="titulo"><i class="bi bi-shop  me-2"></i> Locales</h2>
+    <div>
+      <button (click)="nuevoLocal()" class="btn-add">
+        <i class="bi bi-patch-plus"></i> Agregar Local
+      </button>
+      <button (click)="listarLocalesEnable()" class="btn-add">
+        <i class="bi bi-list-check"></i> Locales Visibles
+      </button>
+    </div>
+  </div>
+
+  <div class="contenedor">
+    <table class="localesTabla">
+      <thead>
+        <tr>
+          <th><i class="bi bi-hash me-2"></i>ID</th>
+          <th><i class="bi bi-geo-alt me-2"></i>Distrito</th>
+          <th><i class="bi bi-map me-2"></i>Dirección</th>
+          <th><i class="bi bi-telephone me-2"></i>Teléfono</th>
+          <th><i class="bi bi-envelope me-2"></i>Email</th>
+          <th><i class="bi bi-clock me-2"></i>Apertura</th>
+          <th><i class="bi bi-clock-history me-2"></i>Cierre</th>
+          <th><i class="bi bi-eye me-2"></i>Visible</th>
+          <th><i class="bi bi-gear me-2"></i>Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let local of locales">
+          <td>{{ local.id_local }}</td>
+          <td>{{ local.distrito.nom_dis }}</td>
+          <td>{{ local.dir_local }}</td>
+          <td>{{ local.tel_local }}</td>
+          <td>{{ local.email_local }}</td>
+          <td>{{ local.horario_apertura }}</td>
+          <td>{{ local.horario_cierre }}</td>
+          <td>
+            <span [ngClass]="getStatusClass(local.enable)">
+              {{ local.enable === 'S' ? 'Visible' : 'No Visible' }}
+            </span>
+          </td>
+          <td class="acciones">
+            <button (click)="editarLocal(local)" class="btn-edit">
+              <i class="bi bi-pencil-square"></i>
+            </button>
+            <button (click)="eliminarLocalEnable(local)" class="btn-delete">
+              <i class="bi bi-trash"></i>
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

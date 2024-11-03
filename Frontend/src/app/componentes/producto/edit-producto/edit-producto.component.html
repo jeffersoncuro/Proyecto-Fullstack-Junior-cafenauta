@@ -1,0 +1,69 @@
+<div class="container"><br><br>
+    <div class="producto-card">
+        <div class="card-header">
+            <h3 class="titulo"><i class="bi bi-pencil-square me-2"></i>Editar Producto</h3>
+        </div>
+
+        <div class="card-body">
+            <form #form="ngForm" (ngSubmit)="onSubmit()" novalidate>
+                <div class="form-group">
+                    <label for="id">ID</label>
+                    <input type="text" class="form-control id" [(ngModel)]="regProducto.id_producto" name="id" readonly>
+                </div>
+
+                <div class="form-group">
+                    <label for="nombre">Nombre</label>
+                    <input type="text" [(ngModel)]="regProducto.nombre" name="nombre" id="nombre" class="form-control"
+                           placeholder="Ingresar nombre del producto" required #nombre="ngModel">
+                    <div *ngIf="nombre.invalid && nombre.touched" class="text-danger">
+                      El nombre es obligatorio.
+                    </div>
+                  </div>
+
+                <div class="form-group">
+                    <label for="descripcion">Descripción</label>
+                    <input type="text" [(ngModel)]="regProducto.descripcion" name="descripcion" id="descripcion"
+                           class="form-control" placeholder="Ingresar descripción" required #descripcion="ngModel">
+                    <div *ngIf="descripcion.invalid && descripcion.touched" class="text-danger">
+                      La descripción es obligatoria.
+                    </div>
+                  </div>
+                <div class="form-group">
+                    <label for="precio">Precio</label>
+                    <input type="number" [(ngModel)]="regProducto.precio" name="precio" id="precio" class="form-control"
+                        placeholder="Ingresar precio" required min="1" #precio="ngModel">
+                    <div *ngIf="precio.invalid && precio.touched" class="text-danger">
+                    El precio es obligatorio y debe ser mayor que 0.
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="idcat">Categoría</label>
+                    <select [(ngModel)]="regProducto.id_categoria.id_categoria" name="id_categoria" id="id_categoria"
+                            class="form-control" required #categoria="ngModel">
+                      <option [ngValue]="null" disabled>Selecciona una categoría</option>
+                      <option *ngFor="let cat of tipCatego" [value]="cat.id_categoria">{{cat.nombre}}</option>
+                    </select>
+                    <div *ngIf="categoria.invalid && categoria.touched" class="text-danger">
+                      La categoría es obligatoria.
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="enable">Estado</label>
+                    <select [(ngModel)]="regProducto.enable" name="enable" id="enable" class="form-control" required #enable="ngModel">
+                    <option [value]="'N'">No disponible</option>
+                    <option [value]="'S'">Disponible</option>
+                    </select>
+                    <div *ngIf="enable.invalid && enable.touched" class="text-danger">
+                    El estado es obligatorio.
+                    </div>
+                </div>
+
+                <br><br>
+                <button (click)="cancelar()" class="btn-cancelar">Cancelar</button>
+                <button type="submit" class="btn-agregar">Actualizar Producto</button>
+            </form>
+        </div>
+    </div>
+</div>

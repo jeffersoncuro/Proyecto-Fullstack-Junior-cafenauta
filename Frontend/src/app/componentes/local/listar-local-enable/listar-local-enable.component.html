@@ -1,0 +1,32 @@
+<div class="locales">
+  <div class="header">
+    <h2 class="titulo"><i class="bi bi-eye"></i> Locales Visibles</h2>
+  </div>
+  
+  <div class="contenedor">
+    <table class="localesTabla">
+      <thead>
+        <tr>
+          <th><i class="bi bi-hash me-2"></i>ID</th>
+          <th><i class="bi bi-geo-alt me-2"></i>Distrito</th>
+          <th><i class="bi bi-map me-2"></i>Dirección</th>
+          <th><i class="bi bi-telephone me-2"></i>Teléfono</th>
+          <th><i class="bi bi-envelope me-2"></i>Email</th>
+          <th><i class="bi bi-clock me-2"></i>Apertura</th>
+          <th><i class="bi bi-clock-history me-2"></i>Cierre</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let local of locales">
+          <td>{{ local.id_local }}</td>
+          <td>{{ local.distrito.nom_dis }}</td>
+          <td>{{ local.dir_local }}</td>
+          <td>{{ local.tel_local }}</td>
+          <td>{{ local.email_local }}</td>
+          <td>{{ local.horario_apertura }}</td>
+          <td>{{ local.horario_cierre }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
